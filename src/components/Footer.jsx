@@ -17,11 +17,10 @@ export default function Footer() {
     name: "",
     mobile: "",
     specialization: "",
-    message: ""
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitStatus, setSubmitStatus] = useState({ type: "" });
 
   const handleChange = (e) => {
     setFormData({
@@ -33,13 +32,12 @@ export default function Footer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: "", message: "" });
+    setSubmitStatus({ type: ""});
 
     const payload = {
       name: formData.name,
       mobile: formData.mobile,
       specialization: formData.specialization,
-      message: formData.message,
     };
 
     try {
@@ -56,7 +54,7 @@ export default function Footer() {
         throw new Error("Unable to send message right now.");
       }
 
-      setFormData({ name: "", mobile: "", specialization: "", message: "" });
+      setFormData({ name: "", mobile: "", specialization: "" });
       setSubmitStatus({
         type: "success",
         message: "Thank you! Your message has been sent successfully.",
@@ -140,66 +138,59 @@ export default function Footer() {
           </div>
 
           {/* Right Section: Contact Form */}
-          <div className="lg:w-1/2 bg-[#0095d5] p-10 lg:p-16 flex flex-col justify-center text-white">
-            <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
+          <div className="lg:w-1/2  p-6 sm:p-8 lg:p-10 flex flex-col justify-center text-white">
+            <div className="rounded-[28px] border bg-[#0095d5]  backdrop-blur-sm p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+              <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-                required
-                className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-              />
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name"
+                  required
+                  className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                />
 
-              <input
-                type="tel"
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleChange}
-                placeholder="Mobile Number"
-                required
-                className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-              />
+                <input
+                  type="tel"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Mobile Number"
+                  required
+                  className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                />
 
-              <select
-                name="specialization"
-                value={formData.specialization}
-                onChange={handleChange}
-                className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                required
-              >
-                <option value="">Select Specialization</option>
-                <option value="obstetrics-gynecology">Obstetrics and Gynecology</option>
-                <option value="pediatric-neonatology">Pediatric and Neonatology</option>
-                <option value="general-medicine">General Medicine</option>
-              </select>
+                <select
+                  name="specialization"
+                  value={formData.specialization}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                  required
+                >
+                  <option value="">Select Specialization</option>
+                  <option value="obstetrics-gynecology">Obstetrics and Gynecology</option>
+                  <option value="pediatric-neonatology">Pediatric and Neonatology</option>
+                  <option value="general-medicine">General Medicine</option>
+                </select>
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your Message"
-                rows={4}
-                className="w-full px-5 py-4 rounded-2xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white resize-none"
-              />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-white hover:bg-gray-100 transition-colors text-[#0095d5] font-semibold py-4 rounded-2xl text-lg disabled:opacity-70"
+                >
+                  {isSubmitting ? "Sending..." : "SUBMIT"}
+                </button>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-white hover:bg-gray-100 transition-colors text-[#0095d5] font-semibold py-4 rounded-2xl text-lg disabled:opacity-70"
-              >
-                {isSubmitting ? "Sending..." : "SUBMIT"}
-              </button>
-
-              {submitStatus.message ? (
-                <p className={`text-sm ${submitStatus.type === "error" ? "text-red-100" : "text-green-100"}`}>
-                  {submitStatus.message}
-                </p>
-              ) : null}
-            </form>
+                {submitStatus.message ? (
+                  <p className={`text-sm ${submitStatus.type === "error" ? "text-red-100" : "text-green-100"}`}>
+                    {submitStatus.message}
+                  </p>
+                ) : null}
+              </form>
+            </div>
           </div>
         </div>
       </div>

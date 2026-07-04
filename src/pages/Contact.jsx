@@ -10,11 +10,10 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
-    specialization: "",
-    message: ""
+    specialization: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitStatus, setSubmitStatus] = useState({ type: "" });
 
   const sectionRef = useRef(null);
   const formRef = useRef(null);
@@ -29,7 +28,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: "", message: "" });
+    setSubmitStatus({ type: "" });
 
     try {
       const response = await fetch(FORM_ENDPOINT, {
@@ -45,7 +44,7 @@ const Contact = () => {
         throw new Error("Unable to send your message right now.");
       }
 
-      setFormData({ name: "", mobile: "", specialization: "", message: "" });
+      setFormData({ name: "", mobile: "", specialization: "" });
       setSubmitStatus({
         type: "success",
         message: "Thank you! Your message has been received. We will contact you soon.",
@@ -165,14 +164,6 @@ const Contact = () => {
                 <option value="general-medicine">General Medicine</option>
               </select>
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your Message (Optional)"
-                rows={4}
-                className="w-full px-5 py-4 rounded-2xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-300 text-gray-900 resize-none"
-              />
 
               <button
                 type="submit"
