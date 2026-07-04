@@ -55,6 +55,17 @@ const serviceCategories = [
       "Preventive Health Care"
     ]
   },
+
+  {
+    title: "Physiotherapy",
+    icon: <FaBaby />,
+    items: [
+     "Rehabilitation Services",
+     "Pain Management",
+     "Physical Therapy",
+     "Personalized rehabilitation programs",
+    ]
+  },
   {
     title: "Diet & Nutrition",
     icon: <FaAppleWhole />,
@@ -95,16 +106,7 @@ const serviceCategories = [
       // "Premature Infant Support"
     ]
   },
-  {
-    title: "Physiotherapy",
-    icon: <FaBaby />,
-    items: [
-      // "Newborn Care & Screenings",
-      // "Immunization Programs",
-      // "Developmental Tracking",
-      // "Premature Infant Support"
-    ]
-  }
+  
 
 ];
 

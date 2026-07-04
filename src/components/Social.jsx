@@ -4,6 +4,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
   FaLinkedinIn,
+  FaYoutube,
 } from "react-icons/fa";
 
 const social = [
@@ -33,10 +34,16 @@ const social = [
       </div>
     ),
   },
-
- 
-
- 
+  {
+    icon: <FaYoutube />,
+    title: "YouTube",
+    link: "https://www.youtube.com/@MGMHopitalResearchCentrepvtltd",
+    content: (
+      <div>
+        <p className="font-semibold">Watch our videos</p>
+      </div>
+    ),
+  },
 ];
 
 const Social = () => {

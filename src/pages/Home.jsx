@@ -128,9 +128,18 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-[#092847]/90 via-[#092847]/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[90vw] items-center px-6 py-20 lg:px-8">
-          <div className="grid w-full items-center gap-12 lg:grid-cols-2">
-            <div className="mt-10 max-w-2xl space-y-8 text-[#fff] lg:pl-4 lg:mt-16">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[90vw] items-center px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="absolute inset-0 -z-10 lg:hidden">
+            <img
+              src={heroimg}
+              alt="MGM Hospital"
+              className="h-full w-full object-cover opacity-25"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0d3b6b]/70 via-[#0d3b6b]/55 to-[#0d3b6b]" />
+          </div>
+
+          <div className="grid w-full items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
+            <div className="mt-2 max-w-2xl space-y-6 text-[#fff] sm:space-y-8 lg:mt-16 lg:pl-4">
               <div className="inline-flex rounded-full border border-[#fff]/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#fff] shadow-sm">
                 40+ Years of Trusted Healthcare Excellence
               </div>
@@ -146,7 +155,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="mx-auto w-full max-w-md lg:ml-auto">
+            <div className="mx-auto flex w-full max-w-md flex-col gap-4 lg:ml-auto">
               <div className="rounded-[2rem] border border-[#0d3b6b]/10 bg-white/95 p-7 shadow-[0_20px_70px_rgba(13,59,107,0.12)]">
                 <div className="mb-8 text-center">
                   <div className="text-3xl font-bold text-[#c2185b]">Book Appointment</div>

@@ -130,7 +130,7 @@ export default function Footer() {
                 <a href="https://www.facebook.com/mgmhospitalpatna" target="_blank" className="hover:text-[#e91e63] transition-colors">
                   <FaFacebook />
                 </a>
-                <a href="https://www.instagram.com/mgmhospitalpatna/" target="_blank" className="hover:text-[#e91e63] transition-colors">
+                <a href="https://www.instagram.com/mgmresearchcentre?igsh=czZlbGlwY21tMWtt" target="_blank" className="hover:text-[#e91e63] transition-colors">
                   <FaInstagram />
                 </a>
               </div>

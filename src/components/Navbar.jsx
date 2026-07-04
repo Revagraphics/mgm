@@ -240,7 +240,7 @@ export default function Navbar() {
             </a> */}
 
             <a
-              href="https://www.instagram.com/mgmhospitalpatna/"
+              href="https://www.instagram.com/mgmresearchcentre?igsh=czZlbGlwY21tMWtt"
               className="text-zinc-400 hover:text-[#423e95] transition-all duration-300 hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"
@@ -259,15 +259,15 @@ export default function Navbar() {
               <FaFacebook />
             </a>
 
-            {/* <a
-              href="https://www.linkedin.com/company/werevagraphics"
+            <a
+              href="https://www.linkedin.com/company/mgm-hospital-patna/"
               className="text-zinc-400 hover:text-[#423e95] transition-all duration-300 hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"
               title="LinkedIn"
             >
               <FaLinkedin />
-            </a> */}
+            </a>
           </div>
         </div>
       </aside>
