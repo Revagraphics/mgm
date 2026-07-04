@@ -125,7 +125,7 @@ const Home = () => {
             alt="MGM Hospital"
             className="h-full w-full object-cover opacity-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#092847]/90 via-[#092847]/40 to-transparent" />
+          <div className="absolute inset-0 to-transparent" />
         </div>
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[90vw] items-center px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
@@ -133,18 +133,18 @@ const Home = () => {
             <img
               src={heroimg}
               alt="MGM Hospital"
-              className="h-full w-full object-cover opacity-25"
+              className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0d3b6b]/70 via-[#0d3b6b]/55 to-[#0d3b6b]" />
+            <div className="absolute inset-0   " />
           </div>
 
           <div className="grid w-full items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="mt-2 max-w-2xl space-y-6 text-[#fff] sm:space-y-8 lg:mt-16 lg:pl-4">
-              <div className="inline-flex rounded-full border border-[#fff]/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#fff] shadow-sm">
+              <div className="inline-flex rounded-full border border-[#fff]/15 px-4 py-2 sm:text-sm font-semibold uppercase  text-[#fff] ">
                 40+ Years of Trusted Healthcare Excellence
               </div>
 
-              <div className="rounded-[2rem] border border-[#fff]/40 p-6 shadow-[0_20px_70px_rgba(13,59,107,0.09)] md:p-8">
+              <div className="rounded-[2rem] border border-[#fff]/40 p-6  md:p-8">
                 <h1 className="text-4xl font-bold leading-[1.05] text-[#fff] sm:text-5xl lg:text-6xl">
                   MGM Hospital &amp;
                   <span className="mt-2 block">Research Centre</span>
@@ -155,23 +155,23 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="mx-auto flex w-full max-w-md flex-col gap-4 lg:ml-auto">
-              <div className="rounded-[2rem] border border-[#0d3b6b]/10 bg-white/95 p-7 shadow-[0_20px_70px_rgba(13,59,107,0.12)]">
-                <div className="mb-8 text-center">
-                  <div className="text-3xl font-bold text-[#c2185b]">Book Appointment</div>
-                  <p className="mt-3 text-gray-600">
+            <div className="mx-auto flex w-full max-w-[22rem] flex-col gap-4 lg:ml-auto lg:max-w-md">
+              <div className="rounded-[1.5rem] border border-[#0d3b6b]/10 bg-white/95 p-4 shadow-[0_20px_70px_rgba(13,59,107,0.12)] sm:rounded-[2rem] sm:p-6 lg:p-7">
+                <div className="mb-6 text-center sm:mb-8">
+                  <div className="text-2xl font-bold text-[#c2185b] sm:text-3xl">Book Appointment</div>
+                  <p className="mt-2 text-sm text-gray-600 sm:mt-3 sm:text-base">
                     Providing expert care to over 50,000+ patients with compassion and excellence.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Name"
-                    className="w-full rounded-2xl border border-gray-200 px-6 py-4 text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b]"
+                    className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b] sm:px-6 sm:py-4 sm:text-base"
                     required
                   />
 
@@ -181,7 +181,7 @@ const Home = () => {
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder="Mobile Number"
-                    className="w-full rounded-2xl border border-gray-200 px-6 py-4 text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b]"
+                    className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b] sm:px-6 sm:py-4 sm:text-base"
                     required
                   />
 
@@ -189,7 +189,7 @@ const Home = () => {
                     name="specialization"
                     value={formData.specialization}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-gray-200 px-6 py-4 text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b]"
+                    className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b] sm:px-6 sm:py-4 sm:text-base"
                     required
                   >
                     <option value="">Specialization</option>
@@ -201,7 +201,7 @@ const Home = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="mt-4 w-full rounded-2xl bg-[#c2185b] py-4 text-lg font-semibold text-white transition-all hover:bg-[#a0154a] disabled:opacity-70"
+                    className="mt-4 w-full rounded-2xl bg-[#c2185b] py-3 text-base font-semibold text-white transition-all hover:bg-[#a0154a] disabled:opacity-70 sm:py-4 sm:text-lg"
                   >
                     {isSubmitting ? "Sending..." : "SUBMIT"}
                   </button>
