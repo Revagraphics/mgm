@@ -1,6 +1,6 @@
 // src/components/Home.jsx
 import { useState } from "react";
-import heroimg from "../assets/hero.png";
+import heroimg from "../assets/hero2.png";
 import aboutImg from "../assets/about.png";
 
 import pmjay from "../assets/pm-jay.png";
@@ -15,6 +15,7 @@ import Doctors from "./Doctors";
 import ServiceSection from "../components/ServiceSection";
 import Reviewcard from "../components/ReviewCard";
 import Seo from "../components/Seo";
+
 
 import AboutUs from "../components/AboutUs";
 
@@ -114,54 +115,54 @@ const Home = () => {
         description="High-quality healthcare services for over 50,000+ patients with compassion and excellence."
       />
       {/* ==================== HERO SECTION ==================== */}
-      <div
-        className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroimg})` }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20 md:bg-black/20" />
+      <section className="relative min-h-[calc(100vh-80px)] top-14 overflow-hidden bg-gradient-to-br from-[#0d3b6b] via-[#1f5aa4] to-[#0d3b6b]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.16),_transparent_36%)]" />
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:30px_30px]" />
 
-        <div className="relative z-10 max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-0 w-full">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[90vh] md:min-h-screen">
-            {/* Left Content */}
-            <div className="text-white space-y-6 md:space-y-8 pt-12 md:pt-0">
-              <div className="inline-block border border-white/40 sm:max-w-2xl  text-white px-4 py-2.5 rounded-full font-semibold text-[12px] shadow-lg">
-                40+ Years of Trusted Healthcare Excellence.
+        <div className="absolute left-0 top-0 bottom-0 hidden w-1/2 lg:block">
+          <img
+            src={heroimg}
+            alt="MGM Hospital"
+            className="h-full w-full object-cover opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#092847]/90 via-[#092847]/40 to-transparent" />
+        </div>
+
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[90vw] items-center px-6 py-20 lg:px-8">
+          <div className="grid w-full items-center gap-12 lg:grid-cols-2">
+            <div className="mt-10 max-w-2xl space-y-8 text-[#fff] lg:pl-4 lg:mt-16">
+              <div className="inline-flex rounded-full border border-[#fff]/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-[#fff] shadow-sm">
+                40+ Years of Trusted Healthcare Excellence
               </div>
 
-              <div className="max-w-xl border border-white/80 rounded-[1.5rem] p-4 sm:p-6 md:p-7">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-white whitespace-normal">
+              <div className="rounded-[2rem] border border-[#fff]/40 p-6 shadow-[0_20px_70px_rgba(13,59,107,0.09)] md:p-8">
+                <h1 className="text-4xl font-bold leading-[1.05] text-[#fff] sm:text-5xl lg:text-6xl">
                   MGM Hospital &amp;
-                  <span className="block mt-2">Research Centre</span>
+                  <span className="mt-2 block">Research Centre</span>
                 </h1>
+                <p className="mt-5 max-w-xl text-lg text-zinc-100">
+                  Providing expert care to over 50,000+ patients with compassion and excellence.
+                </p>
               </div>
-
-              <p className="text-lg md:text-xl text-white/90 max-w-lg">
-                Providing expert care to over 50,000+ patients with compassion
-                and excellence.
-              </p>
             </div>
 
-            {/* Right Side - Appointment Form */}
-            <div className="md:justify-self-end w-full max-w-md mx-auto md:mx-0">
-              <div className="bg-[#c2185b] rounded-3xl p-6 sm:p-8 shadow-2xl">
-                <div className="text-white text-3xl font-bold mb-2">
-                  Book Appointment
+            <div className="mx-auto w-full max-w-md lg:ml-auto">
+              <div className="rounded-[2rem] border border-[#0d3b6b]/10 bg-white/95 p-7 shadow-[0_20px_70px_rgba(13,59,107,0.12)]">
+                <div className="mb-8 text-center">
+                  <div className="text-3xl font-bold text-[#c2185b]">Book Appointment</div>
+                  <p className="mt-3 text-gray-600">
+                    Providing expert care to over 50,000+ patients with compassion and excellence.
+                  </p>
                 </div>
-                <p className="text-purple-100 mb-8 text-sm sm:text-base">
-                  Over 40 Years of Trusted Healthcare Excellence. <br />
-                  Providing expert care to over 50,000+ patients with compassion
-                  and excellence.
-                </p>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Name"
-                    className="w-full px-5 py-4 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-purple-300 text-gray-900"
+                    className="w-full rounded-2xl border border-gray-200 px-6 py-4 text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b]"
                     required
                   />
 
@@ -171,7 +172,7 @@ const Home = () => {
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder="Mobile Number"
-                    className="w-full px-5 py-4 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-purple-300 text-gray-900"
+                    className="w-full rounded-2xl border border-gray-200 px-6 py-4 text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b]"
                     required
                   />
 
@@ -179,47 +180,38 @@ const Home = () => {
                     name="specialization"
                     value={formData.specialization}
                     onChange={handleChange}
-                    className="w-full px-5 py-4 rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-purple-300 text-gray-900"
+                    className="w-full rounded-2xl border border-gray-200 px-6 py-4 text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b]"
                     required
                   >
-                    <option value="obstetrics-gynecology">
-                      Specialization
-                    </option>
-                    <option value="obstetrics-gynecology">
-                      Obstetrics and Gynecology
-                    </option>
-                    <option value="pediatric-neonatology">
-                      Pediatric and Neonatology
-                    </option>
+                    <option value="">Specialization</option>
+                    <option value="obstetrics-gynecology">Obstetrics and Gynecology</option>
+                    <option value="pediatric-neonatology">Pediatric and Neonatology</option>
                     <option value="general-medicine">General Medicine</option>
                   </select>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#fff] transition-colors text-gray-800 font-semibold py-4 rounded-2xl text-lg mt-4 disabled:opacity-70"
+                    className="mt-4 w-full rounded-2xl bg-[#c2185b] py-4 text-lg font-semibold text-white transition-all hover:bg-[#a0154a] disabled:opacity-70"
                   >
                     {isSubmitting ? "Sending..." : "SUBMIT"}
                   </button>
 
-                  {submitStatus.message ? (
-                    <p
-                      className={`text-sm mt-2 ${submitStatus.type === "error" ? "text-red-100" : "text-green-100"}`}
-                    >
+                  {submitStatus.message && (
+                    <p className={`mt-3 text-center text-sm ${submitStatus.type === "error" ? "text-red-600" : "text-green-600"}`}>
                       {submitStatus.message}
                     </p>
-                  ) : null}
+                  )}
                 </form>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/70 to-transparent" />
-      </div>
+      </section>
 
       {/* insurance section */}
+
+
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-5">

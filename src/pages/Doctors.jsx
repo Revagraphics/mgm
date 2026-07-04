@@ -8,8 +8,14 @@ import doctor3 from "../assets/doctor-2.jpeg";
 import doctor4 from "../assets/doctor-3.jpeg";
 import doctor5 from "../assets/doctor-4.jpeg";
 import doctor6 from "../assets/doctor-5.jpeg";
-import doctor7 from "../assets/doctor-6.jpeg";
+import doctor7 from "../assets/doctor-6.png";
 import doctor8 from "../assets/doctor-7.jpeg";
+import doctor9 from "../assets/doctor-8.jpeg";
+import doctor10 from "../assets/doctor-9.png";
+import doctor11 from "../assets/doctor-10.jpeg";
+import doctor12 from "../assets/doctor-12.png";
+import doctor13 from "../assets/doctor-13.png";
+import doctor14 from "../assets/doctor-14.png";
 
 const doctors = [
   {
@@ -62,12 +68,57 @@ const doctors = [
     specialties: "MBBS, MS (OBS & GYNE)",
   },
   {
-    name: "Dr. Sweta Agrawal",
+    name: "DR. Manju Prasad",
     title: "Senior Consultant",
     experience: "12+ Years",
     image: doctor8,
     specialties: "MBBS, DGO, DNB (OBS & GYNE)",
   },
+  {
+    name: "DR. Sweta Agrawal",
+    title: "Senior Consultant",
+    experience: "12+ Years",
+    image: doctor10,
+    specialties: "MBBS, DGO, DNB(OBS.&GYNE), FELLOWSHIP IN LAP. SURGERY( OBS & GYNE).",
+  },
+    {
+    name: "DR. Sadhana",
+    title: "Junior Consultant",
+    experience: "4+ Years",
+    image: doctor11,
+    specialties: "MBBS, MS, DNB (OBS & GYNE)",
+  },
+    {
+    name: "DR. Jyoti Kumari",
+    title: "Junior Consultant",
+    experience: "4+ Years",
+    image: doctor9,
+    specialties: "MBBS, DNB (OBS & GYNE)",
+  },
+    {
+    name: "DR. Deepmala",
+    title: "Junior Consultant",
+    experience: "4+ Years",
+    image: doctor13,
+    specialties: "MBBS, DGO (OBS & GYNE)",
+  },
+    {
+    name: "Dr. Pragya Mishra Chaudhary",
+    title: "Senior Consultant",
+    experience: "12+ Years",
+    image: doctor12,
+    specialties: "MBBS, (M.R.C.O.G, PhD)",
+  },
+    {
+    name: "DR. Shivangi",
+    title: "Senior Resident",
+    experience: "12+ Years",
+    image: doctor14,
+    specialties: "MBBS, MS (OBS & GYNE)",
+  },
+
+
+  
 ];
 
 const Doctors = () => {

@@ -66,7 +66,7 @@ const serviceCategories = [
     ]
   },
   {
-    title: "Laser Therapy",
+    title: "General and Laparoscopic Surgery",
     icon: <FaMeteor />,
     items: [
       // "Advanced Laser Solutions",
@@ -94,7 +94,18 @@ const serviceCategories = [
       // "Developmental Tracking",
       // "Premature Infant Support"
     ]
+  },
+  {
+    title: "Physiotherapy",
+    icon: <FaBaby />,
+    items: [
+      // "Newborn Care & Screenings",
+      // "Immunization Programs",
+      // "Developmental Tracking",
+      // "Premature Infant Support"
+    ]
   }
+
 ];
 
 const ServiceSection = () => {
@@ -125,7 +136,7 @@ const ServiceSection = () => {
 
   return (
     <section ref={sectionRef} className="py-24 bg-[#eefaff] text-gray-800 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[90vw] mx-auto px-6">
         
         {/* Header Block Section */}
         <div className="text-center mb-20">
@@ -139,45 +150,72 @@ const ServiceSection = () => {
         </div>
 
         {/* Dynamic Service Grid Responsive Block */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
-          {serviceCategories.map((category, index) => (
-            <div
-              key={index}
-              className="service-card flex flex-col justify-between bg-emerald-950/5 border border-emerald-950/10 rounded-[2.5rem] p-8 transition-all duration-300 ease-out hover:bg-white hover:scale-[1.04] hover:shadow-[0_20px_50px_rgba(26,36,79,0.08)] group cursor-pointer"
-            >
-              <div>
-                {/* Image-Style Top Vector Graphic / Icon Wrapper */}
-                <div className="flex justify-center mb-6 text-3xl text-emerald-800/70 group-hover:text-[#0095d5] transition-colors duration-300">
-                  <div className="p-4 bg-emerald-950/5 group-hover:bg-[#eefaff] rounded-2xl transition-colors duration-300">
-                    {category.icon}
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 items-stretch">
+            {serviceCategories.slice(0, 5).map((category, index) => (
+              <div
+                key={index}
+                className="service-card flex flex-col justify-between bg-emerald-950/5 border border-emerald-950/10 rounded-[2.5rem] p-8 transition-all duration-300 ease-out hover:bg-white hover:scale-[1.04] hover:shadow-[0_20px_50px_rgba(26,36,79,0.08)] group cursor-pointer"
+              >
+                <div>
+                  {/* Image-Style Top Vector Graphic / Icon Wrapper */}
+                  <div className="flex justify-center mb-6 text-3xl text-emerald-800/70 group-hover:text-[#0095d5] transition-colors duration-300">
+                    <div className="p-4 bg-emerald-950/5 group-hover:bg-[#eefaff] rounded-2xl transition-colors duration-300">
+                      {category.icon}
+                    </div>
                   </div>
+
+                  {/* Service Category Title */}
+                  <h3 className="text-xl font-bold tracking-tight text-center text-[#1a244f] mb-6 transition-colors duration-300">
+                    {category.title}
+                  </h3>
+
+                  {/* Bullet Points List Block */}
+                  <ul className="space-y-3 border-t border-gray-300/40 pt-4">
+                    {category.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 font-medium leading-tight">
+                        <span className="text-[#0095d5] text-xs mt-0.5 flex-shrink-0">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                {/* Service Category Title */}
-                <h3 className="text-xl font-bold tracking-tight text-center text-[#1a244f] mb-6 transition-colors duration-300">
-                  {category.title}
-                </h3>
-
-                {/* Bullet Points List Block */}
-                <ul className="space-y-3 border-t border-gray-300/40 pt-4">
-                  {category.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 font-medium leading-tight">
-                      <span className="text-[#0095d5] text-xs mt-0.5 flex-shrink-0">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
+            ))}
+          </div>
 
-              {/* Bottom Decorative Quick Action Tag */}
-              {/* <div className="mt-8 text-center">
-                <span className="inline-block text-xs font-bold text-[#0095d5] bg-[#0095d5]/5 group-hover:bg-[#0095d5] group-hover:text-white px-4 py-1.5 rounded-full transition-all duration-300">
-                  View Department
-                </span>
-              </div> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch lg:max-w-4xl lg:mx-auto">
+            {serviceCategories.slice(5).map((category, index) => (
+              <div
+                key={index + 5}
+                className="service-card flex flex-col justify-between bg-emerald-950/5 border border-emerald-950/10 rounded-[2.5rem] p-8 transition-all duration-300 ease-out hover:bg-white hover:scale-[1.04] hover:shadow-[0_20px_50px_rgba(26,36,79,0.08)] group cursor-pointer"
+              >
+                <div>
+                  {/* Image-Style Top Vector Graphic / Icon Wrapper */}
+                  <div className="flex justify-center mb-6 text-3xl text-emerald-800/70 group-hover:text-[#0095d5] transition-colors duration-300">
+                    <div className="p-4 bg-emerald-950/5 group-hover:bg-[#eefaff] rounded-2xl transition-colors duration-300">
+                      {category.icon}
+                    </div>
+                  </div>
 
-            </div>
-          ))}
+                  {/* Service Category Title */}
+                  <h3 className="text-xl font-bold tracking-tight text-center text-[#1a244f] mb-6 transition-colors duration-300">
+                    {category.title}
+                  </h3>
+
+                  {/* Bullet Points List Block */}
+                  <ul className="space-y-3 border-t border-gray-300/40 pt-4">
+                    {category.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 font-medium leading-tight">
+                        <span className="text-[#0095d5] text-xs mt-0.5 flex-shrink-0">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
