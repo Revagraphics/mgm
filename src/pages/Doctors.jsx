@@ -1,30 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { Draggable } from 'gsap/Draggable';
-// import { ChevronLeft, ChevronRight } from 'lucide-react';
-import {
-  FaArrowRight,
-  FaArrowLeft,
-} from "react-icons/fa";
-
-import doctorOwn from '../assets/doctor-own.png'; 
-import doctor2 from '../assets/doctor-1.jpeg'; 
-import doctor3 from '../assets/doctor-2.jpeg'; 
-import doctor4 from '../assets/doctor-3.jpeg'; 
-import doctor5 from '../assets/doctor-4.jpeg'; 
-import doctor6 from '../assets/doctor-5.jpeg'; 
-import doctor7 from '../assets/doctor-6.jpeg'; 
-import doctor8 from '../assets/doctor-7.jpeg'; 
-
-// Register GSAP plugins
-gsap.registerPlugin(Draggable);
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import Seo from "../components/Seo";
+import doctorOwn from "../assets/doctor-own.png";
+import doctor2 from "../assets/doctor-1.jpeg";
+import doctor3 from "../assets/doctor-2.jpeg";
+import doctor4 from "../assets/doctor-3.jpeg";
+import doctor5 from "../assets/doctor-4.jpeg";
+import doctor6 from "../assets/doctor-5.jpeg";
+import doctor7 from "../assets/doctor-6.jpeg";
+import doctor8 from "../assets/doctor-7.jpeg";
 
 const doctors = [
   {
     name: "Dr. Manju Gita Mishra",
     title: "Chairman & Chief Consultant (OBS. & GYNAE.)",
     experience: "40+ Years",
-    image: doctorOwn, 
+    image: doctorOwn,
     specialties: "MBBS, DGO, MS(OBST. & GYNAE.)",
   },
   {
@@ -82,6 +74,16 @@ const Doctors = () => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const currentIndexRef = useRef(0);
+  const touchStartX = useRef(null);
+  const touchDeltaX = useRef(0);
+
+  const getVisibleCardsCount = () => {
+    if (typeof window === "undefined") return 1;
+    if (window.innerWidth >= 1024) return 4;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  };
 
   // Responsive card measurements
   const getCardWidth = () => {
@@ -94,35 +96,75 @@ const Doctors = () => {
     const cardWidth = getCardWidth();
     const maxIndex = doctors.length - getVisibleCardsCount();
     const targetIndex = Math.max(0, Math.min(index, maxIndex));
-    
+
+    currentIndexRef.current = targetIndex;
     setCurrentIndex(targetIndex);
 
-    gsap.to(sliderRef.current, {
-      x: -targetIndex * cardWidth,
-      duration: 0.6,
-      ease: "power2.out"
-    });
-  };
-
-  const getVisibleCardsCount = () => {
-    if (window.innerWidth >= 1024) return 4;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
+    if (sliderRef.current) {
+      gsap.to(sliderRef.current, {
+        x: -targetIndex * cardWidth,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
   };
 
   const handleNext = () => {
     const maxIndex = doctors.length - getVisibleCardsCount();
-    if (currentIndex < maxIndex) slideTo(currentIndex + 1);
+    if (currentIndexRef.current < maxIndex)
+      slideTo(currentIndexRef.current + 1);
   };
 
   const handlePrev = () => {
-    if (currentIndex > 0) slideTo(currentIndex - 1);
+    if (currentIndexRef.current > 0) slideTo(currentIndexRef.current - 1);
+  };
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+
+  const handleTouchMove = (event) => {
+    if (touchStartX.current === null) return;
+
+    const currentX = event.touches[0].clientX;
+    touchDeltaX.current = currentX - touchStartX.current;
+
+    if (Math.abs(touchDeltaX.current) > 5) {
+      event.preventDefault();
+      const cardWidth = getCardWidth();
+      const offsetX = touchDeltaX.current;
+
+      gsap.set(sliderRef.current, {
+        x: -(currentIndexRef.current * cardWidth) + offsetX,
+      });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null) return;
+
+    const swipeThreshold = 60;
+    if (touchDeltaX.current < -swipeThreshold) {
+      handleNext();
+    } else if (touchDeltaX.current > swipeThreshold) {
+      handlePrev();
+    } else {
+      slideTo(currentIndexRef.current);
+    }
+
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
   };
 
   useEffect(() => {
+    currentIndexRef.current = currentIndex;
+  }, [currentIndex]);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Entrance Animation on Page Scroll
-      gsap.fromTo(".doctor-card", 
+      gsap.fromTo(
+        ".doctor-card",
         { opacity: 0, y: 50, scale: 0.95 },
         {
           opacity: 1,
@@ -134,134 +176,131 @@ const Doctors = () => {
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 75%",
-          }
-        }
+          },
+        },
       );
-
-      // 2. Mobile Swipe & Drag Features
-      Draggable.create(sliderRef.current, {
-        type: "x",
-        edgeResistance: 0.65,
-        bounds: containerRef.current,
-        inertia: true,
-        throwProps: true,
-        onDragEnd: function () {
-          const cardWidth = getCardWidth();
-          const approxIndex = Math.round(-this.x / cardWidth);
-          slideTo(approxIndex);
-        }
-      });
     }, containerRef);
 
-    // Re-align slider positions if user resizes browser window
-    const handleResize = () => slideTo(currentIndex);
-    window.addEventListener('resize', handleResize);
+    slideTo(0);
+
+    const handleResize = () => slideTo(currentIndexRef.current);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       ctx.revert();
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [currentIndex]);
+  }, []);
 
   const maxIndex = doctors.length - getVisibleCardsCount();
 
   return (
-    <section ref={containerRef} className="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="max-w-[90vw] mx-auto px-4 md:px-6">
-        
-        {/* Header & Controls Container */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-3xl">
-            <h2 className="text-4xl md:text-4xl font-extrabold text-[#1e3a8a] tracking-tight mb-4">
-              Our Team of Expert Doctors
-            </h2>
-            <p className="text-md text-gray-600">
-              Highly experienced and compassionate doctors dedicated to women’s and child health.
-            </p>
+    <>
+      <Seo
+        title="Doctors | MGM Hospital"
+        description="Highly experienced and compassionate doctors dedicated to women's and child health."
+      />
 
-          </div>
-          
-          {/* Navigation Slider Buttons */}
-          <div className="flex items-center gap-3 self-start md:self-end">
-            <button 
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className={`p-3 rounded-full border transition-all duration-300 ${
-                currentIndex === 0 
-                  ? 'border-gray-200 text-gray-300 cursor-not-allowed' 
-                  : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-md'
-              }`}
-            >
-              < FaArrowLeft size={24} />
-            </button>
-            <button 
-              onClick={handleNext}
-              disabled={currentIndex >= maxIndex}
-              className={`p-3 rounded-full border transition-all duration-300 ${
-                currentIndex >= maxIndex 
-                  ? 'border-gray-200 text-gray-300 cursor-not-allowed' 
-                  : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-md'
-              }`}
-            >
-              < FaArrowRight size={24} />
-            </button>
-          </div>
-        </div>
+      <section
+        ref={containerRef}
+        className="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+      >
+        <div className="max-w-[90vw] mx-auto px-4 md:px-6">
+          {/* Header & Controls Container */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="max-w-3xl">
+              <h2 className="text-4xl md:text-4xl font-extrabold text-[#1e3a8a] tracking-tight mb-4">
+                Our Team of Expert Doctors
+              </h2>
+              <p className="text-md text-gray-600">
+                Highly experienced and compassionate doctors dedicated to
+                women’s and child health.
+              </p>
+            </div>
 
-        {/* Outer Window (Hides horizontal page scrollbars) */}
-        <div className="overflow-visible md:overflow-hidden -mx-4 px-4">
-          
-          {/* Main Slider Row */}
-          <div 
-            ref={sliderRef} 
-            className="flex gap-6 cursor-grab active:cursor-grabbing will-change-transform"
-          >
-            {doctors.map((doctor, index) => (
-              <div
-                key={index}
-                className="doctor-card flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col justify-between"
+            {/* Navigation Slider Buttons */}
+            <div className="flex items-center gap-3 self-start md:self-end">
+              <button
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+                className={`p-3 rounded-full border transition-all duration-300 ${
+                  currentIndex === 0
+                    ? "border-gray-200 text-gray-300 cursor-not-allowed"
+                    : "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-md"
+                }`}
               >
-                <div>
-                  {/* Doctor Profile Picture Area */}
-                  <div className="relative h-80 bg-slate-100 overflow-hidden">
-                    <img
-                      src={doctor.image}
-                      alt={doctor.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-xs font-bold px-3 py-1.5 rounded-full text-[#1e3a8a] shadow-sm">
-                      {doctor.experience}
+                <FaArrowLeft size={24} />
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex >= maxIndex}
+                className={`p-3 rounded-full border transition-all duration-300 ${
+                  currentIndex >= maxIndex
+                    ? "border-gray-200 text-gray-300 cursor-not-allowed"
+                    : "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-md"
+                }`}
+              >
+                <FaArrowRight size={24} />
+              </button>
+            </div>
+          </div>
+
+          {/* Outer Window (Hides horizontal page scrollbars) */}
+          <div className="overflow-visible md:overflow-hidden -mx-4 px-4">
+            {/* Main Slider Row */}
+            <div
+              ref={sliderRef}
+              className="flex gap-6 cursor-grab active:cursor-grabbing will-change-transform select-none"
+              style={{ touchAction: "pan-y" }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {doctors.map((doctor, index) => (
+                <div
+                  key={index}
+                  className="doctor-card flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Doctor Profile Picture Area */}
+                    <div className="relative h-80 bg-slate-100 overflow-hidden">
+                      <img
+                        src={doctor.image}
+                        alt={doctor.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-xs font-bold px-3 py-1.5 rounded-full text-[#1e3a8a] shadow-sm">
+                        {doctor.experience}
+                      </div>
+                    </div>
+
+                    {/* Card Content Text Fields */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300 mb-1">
+                        {doctor.name}
+                      </h3>
+                      <p className="text-purple-600 font-semibold text-sm mb-3">
+                        {doctor.title}
+                      </p>
+                      <p className="text-gray-500 text-sm line-clamp-2">
+                        {doctor.specialties}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Card Content Text Fields */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300 mb-1">
-                      {doctor.name}
-                    </h3>
-                    <p className="text-purple-600 font-semibold text-sm mb-3">
-                      {doctor.title}
-                    </p>
-                    <p className="text-gray-500 text-sm line-clamp-2">
-                      {doctor.specialties}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Optional Action Button decoration footer */}
-                {/* <div className="px-6 pb-6 pt-2">
+                  {/* Optional Action Button decoration footer */}
+                  {/* <div className="px-6 pb-6 pt-2">
                   <button className="w-full text-center py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-700 transition-all duration-300">
                     View Full Profile
                   </button>
                 </div> */}
-
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

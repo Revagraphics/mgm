@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import machineImage from '../assets/colab.jpeg'; // Your new image
+import machineImage from '../assets/colab.png'; // Your new image
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,60 +35,60 @@ export default function MammographyLaunch() {
       ref={containerRef}
       className="relative w-full py-16 md:py-24 bg-gradient-to-br from-[#1e0b2e] via-[#4a0f3a] to-[#2a0a4f] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           
           {/* Left Side - Updated Content */}
-          <div className="text-white space-y-8">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20">
+          <div className="text-white space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 sm:px-6 py-2 rounded-full border border-white/20">
               <span className="text-pink-400">✦</span>
-              <span className="uppercase tracking-[3px] font-semibold text-sm">LAUNCHING</span>
+              <span className="uppercase tracking-[2px] sm:tracking-[3px] font-semibold text-xs sm:text-sm">LAUNCHING</span>
             </div>
 
-            <h1 className="main-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-none">
+            <h1 className="main-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95]">
               3D MAMMOGRAPHY
             </h1>
 
             <div className="sub-text">
-              <p className="text-2xl md:text-3xl font-medium text-purple-200">
+              <p className="text-lg sm:text-2xl md:text-3xl font-medium text-purple-200 leading-snug">
                 AT MGM HOSPITAL &amp; RESEARCH CENTER PVT. LTD.
               </p>
             </div>
 
-            <div className="flex items-center gap-6">
-              <div className="pink-ribbon w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-5xl">🎀</span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+              <div className="pink-ribbon w-14 h-14 sm:w-16 sm:h-16 bg-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-4xl sm:text-5xl">🎀</span>
               </div>
               <div>
-                <p className="text-4xl md:text-5xl font-bold leading-tight">EARLY DETECTION</p>
-                <p className="text-3xl md:text-4xl font-light text-pink-300">SAVES LIVES</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">EARLY DETECTION</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-light text-pink-300">SAVES LIVES</p>
               </div>
             </div>
 
             {/* Benefits */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
-              <div className="benefit flex gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-5">
-                <div className="text-3xl">📍</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-4 sm:pt-8">
+              <div className="benefit flex gap-3 sm:gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5">
+                <div className="text-2xl sm:text-3xl">📍</div>
                 <div>
-                  <p className="font-semibold">Detects 40% More Small Tumors</p>
+                  <p className="font-semibold text-sm sm:text-base">Detects 40% More Small Tumors</p>
                 </div>
               </div>
-              <div className="benefit flex gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-5">
-                <div className="text-3xl">✅</div>
+              <div className="benefit flex gap-3 sm:gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5">
+                <div className="text-2xl sm:text-3xl">✅</div>
                 <div>
-                  <p className="font-semibold">Higher Accuracy &amp; Less Callbacks</p>
+                  <p className="font-semibold text-sm sm:text-base">Higher Accuracy &amp; Less Callbacks</p>
                 </div>
               </div>
-              <div className="benefit flex gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-5">
-                <div className="text-3xl">🛡️</div>
+              <div className="benefit flex gap-3 sm:gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5">
+                <div className="text-2xl sm:text-3xl">🛡️</div>
                 <div>
-                  <p className="font-semibold">Safe, Quick &amp; Painless</p>
+                  <p className="font-semibold text-sm sm:text-base">Safe, Quick &amp; Painless</p>
                 </div>
               </div>
-              <div className="benefit flex gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-5">
-                <div className="text-3xl">👩‍⚕️</div>
+              <div className="benefit flex gap-3 sm:gap-4 items-start bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5">
+                <div className="text-2xl sm:text-3xl">👩‍⚕️</div>
                 <div>
-                  <p className="font-semibold">Expert Care You Can Trust</p>
+                  <p className="font-semibold text-sm sm:text-base">Expert Care You Can Trust</p>
                 </div>
               </div>
             </div>

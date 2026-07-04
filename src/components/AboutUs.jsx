@@ -161,7 +161,7 @@ export default function AboutUs() {
 
           {/* Right Block: Interactive Parallax/Tilt Canvas Workspace */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="animate-image-container relative w-full max-w-[480px]">
+            <div className="animate-image-container relative w-full max-w-[580px]">
               
               {/* Decorative Secondary Frame Backdrop Frame */}
               <div className="absolute inset-0 bg-[#0095d5]/10 rounded-[2.5rem] transform translate-x-4 translate-y-4 -rotate-2 scale-98 pointer-events-none" />

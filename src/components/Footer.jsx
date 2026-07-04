@@ -1,13 +1,16 @@
 // src/components/Footer.jsx
 import { useState } from "react";
-import { 
+import { Link } from "react-router-dom";
+import {
   FaMapMarkerAlt,
-  FaPhone, 
+  FaPhone,
   FaFacebook,
-  FaInstagram, 
+  FaInstagram,
 } from 'react-icons/fa';
 
 import bottomLogo from "../assets/logo.png";
+
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/sourabhnegi557@email.com";
 
 export default function Footer() {
   const [formData, setFormData] = useState({
@@ -18,6 +21,7 @@ export default function Footer() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     setFormData({
@@ -26,17 +30,45 @@ export default function Footer() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus({ type: "", message: "" });
 
-    setTimeout(() => {
-      console.log("Footer Form Data:", formData);
-      alert("Thank you! Your message has been sent successfully. We will contact you soon.");
-      
+    const payload = {
+      name: formData.name,
+      mobile: formData.mobile,
+      specialization: formData.specialization,
+      message: formData.message,
+    };
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send message right now.");
+      }
+
       setFormData({ name: "", mobile: "", specialization: "", message: "" });
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you! Your message has been sent successfully.",
+      });
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Something went wrong. Please try again later.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 800);
+    }
   };
 
   return (
@@ -84,12 +116,11 @@ export default function Footer() {
                   Quick Links
                 </h3>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-base font-medium">
-                  <li><a href="#" className="hover:text-[#e91e63] transition-colors">→ Home</a></li>
-                  <li><a href="#" className="hover:text-[#e91e63] transition-colors">→ About Us</a></li>
-                  <li><a href="#" className="hover:text-[#e91e63] transition-colors">→ Our Doctors</a></li>
-                  <li><a href="#" className="hover:text-[#e91e63] transition-colors">→ Services</a></li>
-                  <li><a href="#" className="hover:text-[#e91e63] transition-colors">→ Departments</a></li>
-                  <li><a href="#" className="hover:text-[#e91e63] transition-colors">→ Contact Us</a></li>
+                  <li><Link to="/" className="hover:text-[#e91e63] transition-colors">→ Home</Link></li>
+                  <li><Link to="/about" className="hover:text-[#e91e63] transition-colors">→ About Us</Link></li>
+                  <li><Link to="/doctors" className="hover:text-[#e91e63] transition-colors">→ Our Doctors</Link></li>
+                  <li><Link to="/service" className="hover:text-[#e91e63] transition-colors">→ Services</Link></li>
+                  <li><Link to="/contact" className="hover:text-[#e91e63] transition-colors">→ Contact Us</Link></li>
                 </ul>
               </div>
             </div>
@@ -162,6 +193,12 @@ export default function Footer() {
               >
                 {isSubmitting ? "Sending..." : "SUBMIT"}
               </button>
+
+              {submitStatus.message ? (
+                <p className={`text-sm ${submitStatus.type === "error" ? "text-red-100" : "text-green-100"}`}>
+                  {submitStatus.message}
+                </p>
+              ) : null}
             </form>
           </div>
         </div>

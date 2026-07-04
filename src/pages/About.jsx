@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import aboutImg from "../assets/about.png"; // Your team photo
 import WhyChooseUs from "../components/WhyChooseUs";
 import ReviewCard from "../components/ReviewCard";
+import Seo from "../components/Seo";
 const About = () => {
   const sectionRef = useRef(null);
 
@@ -25,6 +26,13 @@ const About = () => {
   }, []);
 
   return (
+
+    <>
+      <Seo
+        title="About Us | MGM Hospital"
+        description="Learn about MGM Hospital & Research Centre, a premier destination for women's and child healthcare in Patna, Bihar."
+      />
+    
     <section ref={sectionRef} className="py-20 bg-white">
       <div className="max-w-[90vw] mt-6 mx-auto py-4 px-6">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -79,6 +87,8 @@ const About = () => {
       <WhyChooseUs />
       <ReviewCard />
     </section>
+
+    </>
   );
 };
 

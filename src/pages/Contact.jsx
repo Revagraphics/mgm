@@ -2,6 +2,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
+import Seo from "../components/Seo";
+
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/sourabhnegi557@email.com";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,6 +13,8 @@ const Contact = () => {
     specialization: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
   const sectionRef = useRef(null);
   const formRef = useRef(null);
@@ -20,13 +26,38 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Contact Form Submitted:", formData);
-    alert("Thank you! Your message has been received. We will contact you soon.");
-    
-    // Reset form
-    setFormData({ name: "", mobile: "", specialization: "", message: "" });
+    setIsSubmitting(true);
+    setSubmitStatus({ type: "", message: "" });
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send your message right now.");
+      }
+
+      setFormData({ name: "", mobile: "", specialization: "", message: "" });
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you! Your message has been received. We will contact you soon.",
+      });
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Something went wrong. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // GSAP Animations
@@ -46,6 +77,13 @@ const Contact = () => {
   }, []);
 
   return (
+    <>
+      <Seo
+        title="Contact Us | MGM Hospital"
+        description="Get in touch with MGM Hospital & Research Centre for appointments, inquiries, or any assistance. Our team is here to help you."
+      />
+
+  
     <section ref={sectionRef} className="min-h-screen bg-gray-50 py-20">
       <div className="max-w-[90vw] mx-auto px-6">
         <div className="grid mt-4 md:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -138,15 +176,24 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#1e3a8a] hover:bg-blue-700 transition-all text-white font-semibold py-4 rounded-2xl text-lg mt-6"
+                disabled={isSubmitting}
+                className="w-full bg-[#1e3a8a] hover:bg-blue-700 transition-all text-white font-semibold py-4 rounded-2xl text-lg mt-6 disabled:opacity-70"
               >
-                SUBMIT
+                {isSubmitting ? "Sending..." : "SUBMIT"}
               </button>
+
+              {submitStatus.message ? (
+                <p className={`text-sm ${submitStatus.type === "error" ? "text-red-600" : "text-green-600"}`}>
+                  {submitStatus.message}
+                </p>
+              ) : null}
             </form>
           </div>
         </div>
       </div>
     </section>
+
+    </>
   );
 };
 
