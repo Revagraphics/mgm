@@ -16,7 +16,7 @@ import doctor11 from "../assets/doctor-10.jpeg";
 import doctor12 from "../assets/doctor-12.png";
 import doctor13 from "../assets/doctor-13.png";
 import doctor14 from "../assets/doctor-14.png";
-import mishra from "../assets/mishra.png";
+import mishra from "../assets/mishraa.png";
 import abhay from "../assets/abhay.png";
 import ajay from "../assets/ajay.png";
 import anish from "../assets/anish.jpeg";

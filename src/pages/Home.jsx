@@ -118,7 +118,7 @@ const Home = () => {
         description="High-quality healthcare services for over 50,000+ patients with compassion and excellence."
       />
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative  min-h-screen flex flex-col overflow-hidden pt-14">
+      <section className="relative mt-14 min-h-screen flex flex-col overflow-hidden pt-14">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
@@ -205,7 +205,7 @@ const Home = () => {
                       className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#e63939] focus:ring-1 focus:ring-[#e63939] transition-all text-gray-900 bg-white"
                       required
                     >
-                      <option value="">Department</option>
+                      <option value="">Specialization</option>
                       <option value="obstetrics-gynecology">Obstetrics &amp; Gynecology</option>
                       <option value="pediatric-neonatology">Pediatric &amp; Neonatology</option>
                       <option value="general-medicine">General Medicine</option>
