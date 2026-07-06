@@ -4,7 +4,7 @@ import Logo from "../assets/logo.png";
 import { FaAngleDown } from "react-icons/fa";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 
-import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export default function Navbar() {
   /* ================= STATE ================= */
@@ -260,13 +260,24 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://www.linkedin.com/company/mgm-hospital-patna/"
+              href="https://www.linkedin.com/company/mgm-hospital-research-centre-pvt-ltd/"
               className="text-zinc-400 hover:text-[#423e95] transition-all duration-300 hover:scale-110"
               target="_blank"
               rel="noopener noreferrer"
               title="LinkedIn"
             >
               <FaLinkedin />
+            </a>
+
+
+            <a
+              href="https://www.youtube.com/@MGMHopitalResearchCentrepvtltd"
+              className="text-zinc-400 hover:text-[#423e95] transition-all duration-300 hover:scale-110"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="YouTube"
+            >
+              <FaYoutube />
             </a>
           </div>
         </div>

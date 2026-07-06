@@ -6,12 +6,13 @@ import {
   FaPhone,
   FaFacebook,
   FaInstagram,
-  FaLinkedin
+  FaLinkedin,
+  FaYoutube
 } from 'react-icons/fa';
 
 import bottomLogo from "../assets/logo.png";
 
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/sourabhnegi557@email.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/mgmhospital0612patna@gmail.com";
 
 export default function Footer() {
   const [formData, setFormData] = useState({
@@ -134,8 +135,11 @@ export default function Footer() {
                 <a href="https://www.instagram.com/mgmresearchcentre?igsh=czZlbGlwY21tMWtt" target="_blank" className="hover:text-[#e91e63] transition-colors">
                   <FaInstagram />
                 </a>
-                <a href="https://www.linkedin.com/company/mgm-hospital-patna/" target="_blank" className="hover:text-[#e91e63] transition-colors">
+                <a href="https://www.linkedin.com/company/mgm-hospital-research-centre-pvt-ltd/" target="_blank" className="hover:text-[#e91e63] transition-colors">
                   <FaLinkedin />
+                </a>
+                <a href="https://www.youtube.com/@MGMHopitalResearchCentrepvtltd" target="_blank" className="hover:text-[#e91e63] transition-colors">
+                  <FaYoutube />
                 </a>
               </div>
             </div>

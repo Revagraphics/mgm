@@ -11,7 +11,7 @@ const social = [
   {
     icon: <FaWhatsapp />,
     title: "WhatsApp",
-    link: "https://wa.me/+91 8102226550",
+    link: "https://wa.me/+918102226550",
     content: (
       <div className="text-center">
         <img
@@ -71,7 +71,11 @@ const Social = () => {
             target={item.link.startsWith("http") ? "_blank" : "_self"}
             rel="noopener noreferrer"
             aria-label={item.title}
-            className="w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-[#c2185b] text-white flex items-center justify-center shadow-lg transition-all duration-300 text-lg lg:text-xl"
+            className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full text-white flex items-center justify-center shadow-lg transition-all duration-300 text-lg lg:text-xl ${
+              item.title === "WhatsApp"
+                ? "bg-[#25D366]"
+                : "bg-[#c2185b]"
+            }`}
           >
             {item.icon}
           </a>

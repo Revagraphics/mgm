@@ -1,6 +1,6 @@
 // src/components/Home.jsx
 import { useState } from "react";
-import heroimg from "../assets/hero2.png";
+import heroimg from "../assets/hero3.png";
 import aboutImg from "../assets/about.png";
 
 import pmjay from "../assets/pm-jay.png";
@@ -15,7 +15,6 @@ import Doctors from "./Doctors";
 import ServiceSection from "../components/ServiceSection";
 import Reviewcard from "../components/ReviewCard";
 import Seo from "../components/Seo";
-
 
 import AboutUs from "../components/AboutUs";
 
@@ -54,13 +53,13 @@ const insuranceData = [
   // },
 ];
 
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/sourabhnegi557@email.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/mgmhospital0612patna@gmail.com";
 
 const Home = () => {
   const [formData, setFormData] = useState({
     name: "",
-    mobile: "",
-    specialization: "",
+    phone: "",
+    department: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
@@ -91,7 +90,11 @@ const Home = () => {
         throw new Error("Unable to send your appointment request right now.");
       }
 
-      setFormData({ name: "", mobile: "", specialization: "" });
+      setFormData({
+        name: "",
+        phone: "",
+        department: "",
+      });
       setSubmitStatus({
         type: "success",
         message: "Thank you! Your appointment request has been received.",
@@ -115,112 +118,138 @@ const Home = () => {
         description="High-quality healthcare services for over 50,000+ patients with compassion and excellence."
       />
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[calc(100vh-80px)] top-14 overflow-hidden bg-gradient-to-br from-[#0d3b6b] via-[#1f5aa4] to-[#0d3b6b]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.16),_transparent_36%)]" />
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:30px_30px]" />
-
-        <div className="absolute left-0 top-0 bottom-0 hidden w-1/2 lg:block">
+      <section className="relative min-h-screen flex flex-col overflow-hidden pt-14">
+        {/* Background Image */}
+        <div className="absolute inset-0">
           <img
             src={heroimg}
-            alt="MGM Hospital"
-            className="h-full w-full object-cover opacity-90"
+            alt="MGM Hospital Building"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 to-transparent" />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b6b]/80 via-[#0d3b6b]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30"></div>
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-[90vw] items-center px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="absolute inset-0 -z-10 lg:hidden">
-            <img
-              src={heroimg}
-              alt="MGM Hospital"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0   " />
-          </div>
-
-          <div className="grid w-full items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
-            <div className="mt-2 max-w-2xl space-y-6 text-[#fff] sm:space-y-8 lg:mt-16 lg:pl-4">
-              <div className="inline-flex rounded-full border border-[#fff]/15 px-4 py-2 sm:text-sm font-semibold uppercase  text-[#fff] ">
-                40+ Years of Trusted Healthcare Excellence
+        <div className="relative z-10 flex-1 flex items-center justify-center max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-center">
+            {/* Left Content */}
+            <div className="text-white space-y-8 text-center lg:text-left">
+              <div className="flex items-center gap-3 justify-center lg:justify-start">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                  <span className="text-[#e63939] text-3xl font-bold">✚</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold tracking-widest">MGM HOSPITAL &amp; RESEARCH CENTRE</p>
+                </div>
               </div>
 
-              <div className="rounded-[2rem] border border-[#fff]/40 p-6  md:p-8">
-                <h1 className="text-4xl font-bold leading-[1.05] text-[#fff] sm:text-5xl lg:text-6xl">
-                  MGM Hospital &amp;
-                  <span className="mt-2 block">Research Centre</span>
+              <div>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-tight">
+                  Trusted Care.<br />
+                  <span className="text-white">Healthier Tomorrow.</span>
                 </h1>
-                <p className="mt-5 max-w-xl text-lg text-zinc-100">
-                  Providing expert care to over 50,000+ patients with compassion and excellence.
-                </p>
               </div>
+
+              <p className="max-w-lg text-lg sm:text-xl text-white/90 mx-auto lg:mx-0">
+                MGM Hospital &amp; Research Centre is committed to providing world-class healthcare with compassion, innovation and excellence.
+              </p>
+
+              
             </div>
 
-            <div className="mx-auto flex w-full max-w-[22rem] flex-col gap-4 lg:ml-auto lg:max-w-md">
-              <div className="rounded-[1.5rem] border border-[#0d3b6b]/10 bg-white/95 p-4 shadow-[0_20px_70px_rgba(13,59,107,0.12)] sm:rounded-[2rem] sm:p-6 lg:p-7">
-                <div className="mb-6 text-center sm:mb-8">
-                  <div className="text-2xl font-bold text-[#c2185b] sm:text-3xl">Book Appointment</div>
-                  <p className="mt-2 text-sm text-gray-600 sm:mt-3 sm:text-base">
-                    Providing expert care to over 50,000+ patients with compassion and excellence.
-                  </p>
+            {/* Right Side - Appointment Form */}
+            <div id="appointment-form" className="flex justify-center lg:justify-end">
+              <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 w-full max-w-md">
+                <div className="mb-8">
+                  <h2 className="text-3xl font-bold text-gray-900">
+                    Book an <span className="text-[#e63939]">Appointment</span>
+                  </h2>
+                  <p className="text-gray-600 mt-2">Providing expert care to over 50,000 patients with compassion and excellence.</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Name"
-                    className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b] sm:px-6 sm:py-4 sm:text-base"
-                    required
-                  />
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Full Name"
+                      className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#e63939] focus:ring-1 focus:ring-[#e63939] transition-all text-gray-900"
+                      required
+                    />
+                  </div>
 
-                  <input
-                    type="tel"
-                    name="mobile"
-                    value={formData.mobile}
-                    onChange={handleChange}
-                    placeholder="Mobile Number"
-                    className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b] sm:px-6 sm:py-4 sm:text-base"
-                    required
-                  />
+                  <div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Phone Number"
+                      className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#e63939] focus:ring-1 focus:ring-[#e63939] transition-all text-gray-900"
+                      required
+                    />
+                  </div>
 
-                  <select
-                    name="specialization"
-                    value={formData.specialization}
-                    onChange={handleChange}
-                    className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#c2185b] sm:px-6 sm:py-4 sm:text-base"
-                    required
-                  >
-                    <option value="">Specialization</option>
-                    <option value="obstetrics-gynecology">Obstetrics and Gynecology</option>
-                    <option value="pediatric-neonatology">Pediatric and Neonatology</option>
-                    <option value="general-medicine">General Medicine</option>
-                  </select>
+                
+
+                  
+
+                  <div>
+                    <select
+                      name="department"
+                      value={formData.department}
+                      onChange={handleChange}
+                      className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#e63939] focus:ring-1 focus:ring-[#e63939] transition-all text-gray-900 bg-white"
+                      required
+                    >
+                      <option value="">Department</option>
+                      <option value="obstetrics-gynecology">Obstetrics &amp; Gynecology</option>
+                      <option value="pediatric-neonatology">Pediatric &amp; Neonatology</option>
+                      <option value="general-medicine">General Medicine</option>
+                      <option value="cardiology">General and laparoscopic surgery </option>
+                      <option value="physiotherapy">Physiotherapy</option>
+                      <option value="dietetics">Dietetics (Dietitian)</option>  
+                    </select>
+                  </div>
+
+                 
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="mt-4 w-full rounded-2xl bg-[#c2185b] py-3 text-base font-semibold text-white transition-all hover:bg-[#a0154a] disabled:opacity-70 sm:py-4 sm:text-lg"
+                    className="w-full bg-[#e63939] hover:bg-[#c1121f] transition-all text-white font-semibold py-4 rounded-2xl text-lg shadow-lg mt-3 disabled:opacity-70"
                   >
-                    {isSubmitting ? "Sending..." : "SUBMIT"}
+                    {isSubmitting ? "SUBMITTING..." : "SUBMIT REQUEST"}
                   </button>
 
                   {submitStatus.message && (
-                    <p className={`mt-3 text-center text-sm ${submitStatus.type === "error" ? "text-red-600" : "text-green-600"}`}>
+                    <p
+                      className={`text-center text-sm font-medium ${
+                        submitStatus.type === "error" ? "text-red-600" : "text-green-600"
+                      }`}
+                    >
                       {submitStatus.message}
                     </p>
                   )}
+
+                  <p className="text-center text-xs text-gray-500 flex items-center justify-center gap-2">
+                    <span className="text-green-600">🔒</span>
+                    Your information is safe with us.
+                  </p>
                 </form>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Bottom decorative element */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
       </section>
 
       {/* insurance section */}
-
-
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-5">

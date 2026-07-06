@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 
 import Seo from "../components/Seo";
 
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/sourabhnegi557@email.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/mgmhospital0612patna@gmail.com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
