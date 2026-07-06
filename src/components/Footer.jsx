@@ -6,6 +6,7 @@ import {
   FaPhone,
   FaFacebook,
   FaInstagram,
+  FaLinkedin
 } from 'react-icons/fa';
 
 import bottomLogo from "../assets/logo.png";
@@ -132,6 +133,9 @@ export default function Footer() {
                 </a>
                 <a href="https://www.instagram.com/mgmresearchcentre?igsh=czZlbGlwY21tMWtt" target="_blank" className="hover:text-[#e91e63] transition-colors">
                   <FaInstagram />
+                </a>
+                <a href="https://www.linkedin.com/company/mgm-hospital-patna/" target="_blank" className="hover:text-[#e91e63] transition-colors">
+                  <FaLinkedin />
                 </a>
               </div>
             </div>
