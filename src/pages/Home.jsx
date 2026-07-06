@@ -118,7 +118,7 @@ const Home = () => {
         description="High-quality healthcare services for over 50,000+ patients with compassion and excellence."
       />
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-screen flex flex-col overflow-hidden pt-14">
+      <section className="relative  min-h-screen flex flex-col overflow-hidden pt-14">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
