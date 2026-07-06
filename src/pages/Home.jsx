@@ -138,6 +138,7 @@ const Home = () => {
               <div className="flex items-center gap-3 justify-center lg:justify-start">
                 <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                   <span className="text-[#e63939] text-3xl font-bold">✚</span>
+
                 </div>
                 <div>
                   <p className="text-sm font-semibold tracking-widest">MGM HOSPITAL &amp; RESEARCH CENTRE</p>
@@ -151,7 +152,7 @@ const Home = () => {
                 </h1>
               </div>
 
-              <p className="max-w-lg text-lg sm:text-xl text-white/90 mx-auto lg:mx-0">
+              <p className="max-w-2xl text-lg sm:text-xl text-white/90 mx-auto lg:mx-0">
                 MGM Hospital &amp; Research Centre is committed to providing world-class healthcare with compassion, innovation and excellence.
               </p>
 
@@ -209,7 +210,7 @@ const Home = () => {
                       <option value="obstetrics-gynecology">Obstetrics &amp; Gynecology</option>
                       <option value="pediatric-neonatology">Pediatric &amp; Neonatology</option>
                       <option value="general-medicine">General Medicine</option>
-                      <option value="cardiology">General and laparoscopic surgery </option>
+                      <option value="cardiology">General &amp; Laparoscopic Surgery</option>
                       <option value="physiotherapy">Physiotherapy</option>
                       <option value="dietetics">Dietetics (Dietitian)</option>  
                     </select>

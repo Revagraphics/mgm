@@ -162,6 +162,10 @@ const Contact = () => {
                 <option value="obstetrics-gynecology">Obstetrics and Gynecology</option>
                 <option value="pediatric-neonatology">Pediatric and Neonatology</option>
                 <option value="general-medicine">General Medicine</option>
+                <option value="cardiology">General &amp; Laparoscopic Surgery</option>
+                <option value="physiotherapy">Physiotherapy</option>
+                <option value="dietetics">Dietetics (Dietitian)</option> 
+                
               </select>
 
 
