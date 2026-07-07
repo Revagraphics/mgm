@@ -207,7 +207,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="w-full bg-[#1a244f] py-6 text-center text-sm text-gray-400">
+      <div className="w-full bg-[#1a244f] py-6 text-center text-sm text-zinc-200">
         All Rights Reserved © {new Date().getFullYear()} MGM Hospital &amp; Research Centre Private Limited
       </div>
     </footer>

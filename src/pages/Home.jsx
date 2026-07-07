@@ -136,12 +136,12 @@ const Home = () => {
             {/* Left Content */}
             <div className="text-white space-y-8 text-center lg:text-left">
               <div className="flex items-center gap-3 justify-center lg:justify-start">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                {/* <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                   <span className="text-[#e63939] text-3xl font-bold">✚</span>
 
-                </div>
+                </div> */}
                 <div>
-                  <p className="text-sm font-semibold tracking-widest">MGM HOSPITAL &amp; RESEARCH CENTRE</p>
+                  <p className="text-xl lg:text-3xl font-semibold tracking-normal">MGM HOSPITAL &amp; RESEARCH CENTRE</p>
                 </div>
               </div>
 
