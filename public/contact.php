@@ -33,7 +33,8 @@ $source = isset($data['source']) ? trim($data['source']) : 'website';
 // =========================
 $recipients = [
     'mgmhospital0612patna@gmail.com',
-    'crm@adsbazaar.in'
+    'crm@adsbazaar.in',
+    'sourabhnegi557@gmail.com'
 ];
 
 // =========================
