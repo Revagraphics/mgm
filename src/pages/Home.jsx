@@ -53,7 +53,7 @@ const insuranceData = [
   // },
 ];
 
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/mgmhospital0612patna@gmail.com";
+const FORM_ENDPOINT = "/contact.php";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +83,7 @@ const Home = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source: "home-appointment-form" }),
       });
 
       if (!response.ok) {

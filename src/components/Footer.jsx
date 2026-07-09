@@ -12,7 +12,7 @@ import {
 
 import bottomLogo from "../assets/logo.png";
 
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/mgmhospital0612patna@gmail.com";
+const FORM_ENDPOINT = "/contact.php";
 
 export default function Footer() {
   const [formData, setFormData] = useState({
@@ -49,7 +49,7 @@ export default function Footer() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, source: "footer-form" }),
       });
 
       if (!response.ok) {
