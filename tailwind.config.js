@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         primary: ['Playfair Display', 'serif'],
         playfair: ['Playfair Display', 'serif'],
+        inter: ['Inter', 'sans-serif'],
       },
     },
   },

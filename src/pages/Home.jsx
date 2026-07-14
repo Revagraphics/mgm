@@ -17,14 +17,11 @@ import Reviewcard from "../components/ReviewCard";
 import Seo from "../components/Seo";
 
 import AboutUs from "../components/AboutUs";
+import AboutMgm from "../components/AboutMgm";
+import AboutDoctor from "../components/AboutDoctor";
 
 import {
-  FaArrowRight,
-  FaHospital,
-  FaShieldAlt,
-  FaUserShield,
-  FaHeartbeat,
-} from "react-icons/fa";
+  FaArrowRight, FaHospital, FaShieldAlt, FaUserShield, FaHeartbeat, } from "react-icons/fa";
 
 const insuranceData = [
   {
@@ -141,32 +138,41 @@ const Home = () => {
 
                 </div> */}
                 <div>
-                  <p className="text-xl lg:text-3xl font-semibold tracking-normal">MGM HOSPITAL &amp; RESEARCH CENTRE</p>
+                  <p className="text-xl lg:text-3xl font-semibold tracking-normal">
+                    MGM HOSPITAL &amp; RESEARCH CENTRE
+                  </p>
                 </div>
               </div>
 
               <div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-tight">
-                  Trusted Care.<br />
+                  Trusted Care.
+                  <br />
                   <span className="text-white">Healthier Tomorrow.</span>
                 </h1>
               </div>
 
               <p className="max-w-2xl text-lg sm:text-xl text-white/90 mx-auto lg:mx-0">
-                MGM Hospital &amp; Research Centre is committed to providing world-class healthcare with compassion, innovation and excellence.
+                MGM Hospital &amp; Research Centre is committed to providing
+                world-class healthcare with compassion, innovation and
+                excellence.
               </p>
-
-              
             </div>
 
             {/* Right Side - Appointment Form */}
-            <div id="appointment-form" className="flex justify-center lg:justify-end">
+            <div
+              id="appointment-form"
+              className="flex justify-center lg:justify-end"
+            >
               <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 w-full max-w-md">
                 <div className="mb-8">
                   <h2 className="text-3xl font-bold text-gray-900">
                     Book an <span className="text-[#e63939]">Appointment</span>
                   </h2>
-                  <p className="text-gray-600 mt-2">Providing expert care to over 50,000 patients with compassion and excellence.</p>
+                  <p className="text-gray-600 mt-2">
+                    Providing expert care to over 50,000 patients with
+                    compassion and excellence.
+                  </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -194,10 +200,6 @@ const Home = () => {
                     />
                   </div>
 
-                
-
-                  
-
                   <div>
                     <select
                       name="department"
@@ -207,16 +209,20 @@ const Home = () => {
                       required
                     >
                       <option value="">Specialization</option>
-                      <option value="obstetrics-gynecology">Obstetrics &amp; Gynecology</option>
-                      <option value="pediatric-neonatology">Pediatric &amp; Neonatology</option>
+                      <option value="obstetrics-gynecology">
+                        Obstetrics &amp; Gynecology
+                      </option>
+                      <option value="pediatric-neonatology">
+                        Pediatric &amp; Neonatology
+                      </option>
                       <option value="general-medicine">General Medicine</option>
-                      <option value="cardiology">General &amp; Laparoscopic Surgery</option>
+                      <option value="cardiology">
+                        General &amp; Laparoscopic Surgery
+                      </option>
                       <option value="physiotherapy">Physiotherapy</option>
-                      <option value="dietetics">Dietetics (Dietitian)</option>  
+                      <option value="dietetics">Dietetics (Dietitian)</option>
                     </select>
                   </div>
-
-                 
 
                   <button
                     type="submit"
@@ -229,7 +235,9 @@ const Home = () => {
                   {submitStatus.message && (
                     <p
                       className={`text-center text-sm font-medium ${
-                        submitStatus.type === "error" ? "text-red-600" : "text-green-600"
+                        submitStatus.type === "error"
+                          ? "text-red-600"
+                          : "text-green-600"
                       }`}
                     >
                       {submitStatus.message}
@@ -321,10 +329,12 @@ const Home = () => {
 
       {/* ==================== ABOUT SECTION ==================== */}
       <AboutUs />
+      <AboutMgm/>
 
       <WhyChooseUs />
 
       <Doctors />
+      <AboutDoctor/>
       <Facility />
       <Mammography />
       <ServiceSection />
@@ -334,3 +344,4 @@ const Home = () => {
 };
 
 export default Home;
+
