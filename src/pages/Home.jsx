@@ -216,7 +216,7 @@ const Home = () => {
                         Pediatric &amp; Neonatology
                       </option>
                       <option value="general-medicine">General Medicine</option>
-                      <option value="cardiology">
+                      <option value="Laparoscopic-surgery">
                         General &amp; Laparoscopic Surgery
                       </option>
                       <option value="physiotherapy">Physiotherapy</option>
